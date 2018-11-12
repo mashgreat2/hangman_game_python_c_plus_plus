@@ -11,4 +11,4 @@ of the game.
 How to play:
 
 You can clone the repository and type in terminal: "python ./main.py" to start 
-the game.
+the game. 
