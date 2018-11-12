@@ -8,7 +8,7 @@ def run_hangman():
     # print("\nHi, " + name + ".\nGet ready to play some hangman!")
 
     guesses_allowed = 7
-    # Todo: Get lots of words and choose one randomly by using the random.choice method..
+    # Todo: Get lots of words and choose one randomly by using the random.choice method equal of C++.
     words = ["elephant"]
     picked_word = list( words[0] )
 
