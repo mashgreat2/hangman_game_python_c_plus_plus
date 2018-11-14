@@ -30,6 +30,11 @@ extern "C" int add_two_c(int x, int y) {
     return x + y;
 }
 
+extern "C" int fib_num_c(int n) {
+  if ( n <= 1 ) { return n; }
+  return fib_num_c(n-2) + fib_num_c(n-1);
+}
+
 int main() {
 //    std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
