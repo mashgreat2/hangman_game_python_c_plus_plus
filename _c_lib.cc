@@ -27,7 +27,7 @@
 // a normal C function, so that it can work with Python.
 // this is needed for Python to work with C++
 extern "C" int add_two_c(int x, int y) {
-    return x + y;
+  return x + y;
 }
 
 extern "C" int fib_num_c(int n) {
@@ -38,5 +38,5 @@ extern "C" int fib_num_c(int n) {
 int main() {
 //    std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
-    return 0;
+  return 0;
 }
