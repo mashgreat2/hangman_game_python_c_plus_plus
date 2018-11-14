@@ -1,5 +1,11 @@
 # CS 2024 Final Assignment, Python file.
-# Created by SM Mashuque ( sm2344 ), on 11/11/2018
+# Created by
+# SM Mashuque ( sm2344 ),
+#
+#
+#
+#
+# on 11/11/2018
 
 # Todo: design a better interface ?
 def run_hangman():
@@ -60,8 +66,6 @@ def run_hangman():
         print("Congratulations, you win!")
     else:
         print("Failed to guess correctly. Try again.")
-
-
 
 
 
