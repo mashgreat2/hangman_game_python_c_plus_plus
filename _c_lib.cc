@@ -35,6 +35,18 @@ extern "C" int fib_num_c(int n) {
   return fib_num_c(n-2) + fib_num_c(n-1);
 }
 
+// Check if the user has guessed at least one letter correctly.
+extern "C" int check_letter_in_word(char * str, char * letter) {
+    int correct = 0;
+    for(int i = 0; i < str.length(); i++) {
+        if (str[i] == letter)
+            correct++;
+    }
+    if (correct > 0)
+        return 1;
+    return 0;
+}
+
 int main() {
 //    std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
