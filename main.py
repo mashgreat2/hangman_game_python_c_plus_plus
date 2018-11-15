@@ -1,7 +1,7 @@
 # CS 2024 Final Assignment, Python file.
 # Created by
 # SM Mashuque ( sm2344 ),
-#
+# Vy Nguyen ( vqn2 ),
 #
 #
 #
