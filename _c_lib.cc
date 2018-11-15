@@ -38,7 +38,7 @@ extern "C" int fib_num_c(int n) {
 // Check if the user has guessed at least one letter correctly.
 extern "C" int check_letter_in_word(char * str, char * letter) {
     int correct = 0;
-    for(int i = 0; i < str.length(); i++) {
+    for (int i = 0; i < str.length(); i++) {
         if (str[i] == letter)
             correct++;
     }
