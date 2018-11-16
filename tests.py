@@ -15,7 +15,15 @@ class TestCandPythonFunctions(unittest.TestCase):
         expected_msg = "Hello, " + "Jane Doe" + ". Get ready to play some hangman!"
         self.assertEqual(actual_msg, expected_msg)
 
-    # add more tests here.
+    def test_ctypes_update_guessed_correctly(self):
+        n = 10
+        # test n updates
+        n = c_lib.ctypes_update_guessed_correctly(n, 1)
+        n = c_lib.ctypes_update_guessed_correctly(n, 1)
+        self.assertEqual(n, 12)
+        # test n does not update
+        n = c_lib.ctypes_update_guessed_correctly(n, 0)
+        self.assertEqual(n, 12)
 
 
 if __name__ == '__main__':

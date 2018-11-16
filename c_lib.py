@@ -1,17 +1,23 @@
 from ctypes import cdll
 import ctypes
 c_lib = cdll.LoadLibrary('./_c_lib.so')
-# libc = ctypes.CDLL(ctypes.util.find_library('c'))
+# set the types of the functions in here or you can do it later when
+# calling the c++ functions.
 c_lib.greet_player_c.argtype = ctypes.c_char_p
 c_lib.greet_player_c.restype = ctypes.c_char_p
-# libc.free.ar = (ctypes.c_void_p,)
+c_lib.update_guessed_correctly.argtype = ctypes.c_int
+c_lib.update_guessed_correctly.restype = ctypes.c_int
 
 # C++ greet player function
 def ctypes_greet_player(name):
     # need to use encode and decode with utf-8 option or else
     # it does not work.
     _msg = c_lib.greet_player_c(name.encode('utf-8'))
+
     return _msg.decode('utf-8')
+
+def ctypes_update_guessed_correctly(n, b):
+    return c_lib.update_guessed_correctly(n, b)
 
 
 # This is a Python function that calls a C++ add_two function

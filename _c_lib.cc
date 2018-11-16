@@ -36,16 +36,16 @@ extern "C" int fib_num_c(int n) {
 }
 
 // Check if the user has guessed at least one letter correctly.
-extern "C" int check_letter_in_word(char * str, char * letter) {
-    int correct = 0;
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == letter)
-            correct++;
-    }
-    if (correct > 0)
-        return 1;
-    return 0;
-}
+//extern "C" int check_letter_in_word(char * str, char * letter) {
+//    int correct = 0;
+//    for (int i = 0; i < str.length(); i++) {
+//        if (str[i] == letter)
+//            correct++;
+//    }
+//    if (correct > 0)
+//        return 1;
+//    return 0;
+//}
 
 // Create a greeting message with a given player name.
 extern "C" char * greet_player_c(char str[]) {
@@ -63,12 +63,22 @@ extern "C" char * greet_player_c(char str[]) {
   return final;
 }
 
-extern "C" void free_string(char* str) {
-  delete str;
+// update guessed correctly variable. return n + 1 if b is 1
+extern "C" int update_guessed_correctly(int n, int b) {
+  if (b == 1) { return n + 1; }
+  return n;
 }
+
+//extern "C" void free_string(char* str) {
+//  delete str;
+//}
 
 int main() {
 //    std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
+//  int k = 5;
+//  std::cout << "k before: " << k << "\n";
+//  k = update_guessed_correctly(5, 1);
+//  std::cout << "k after: " << k << "\n";
   return 0;
 }
