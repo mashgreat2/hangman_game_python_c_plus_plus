@@ -47,6 +47,26 @@ extern "C" int check_letter_in_word(char * str, char * letter) {
     return 0;
 }
 
+// Create a greeting message with a given player name.
+extern "C" char * greet_player_c(char str[]) {
+//  std::cout << "str: " << str << "\n";
+  char greeting[] = "Hello, ";
+  char message[] = ". Get ready to play some hangman!";
+  int len = 0;
+  len = strlen(str) + strlen(greeting) + strlen(message);
+//  std::cout << "len: " << len << "\n";
+  char * final = new char[len];
+  strcat(final, greeting);
+  strcat(final, str);
+  strcat(final, message);
+//  std::cout << "final: " << final << "\n";
+  return final;
+}
+
+extern "C" void free_string(char* str) {
+  delete str;
+}
+
 int main() {
 //    std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
