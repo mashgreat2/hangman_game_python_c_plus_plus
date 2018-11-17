@@ -23,6 +23,8 @@
 
 #include <iostream>
 
+//#include "random_words.dat"
+
 // need to add - extern “C” before C++ functions to make them work like
 // a normal C function, so that it can work with Python.
 // this is needed for Python to work with C++
