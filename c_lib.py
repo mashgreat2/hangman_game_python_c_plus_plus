@@ -29,11 +29,11 @@ def ctypes_update_guessed_correctly(n, b):
 
 def ctypes_build_display_text(guessed_index_array, str, size):
     # my_list = [0,1,1,1,0,0,0,0]
-    my_list = [1,0,0,0,1,0,0,0,0,0]
-    my_list_p = (ctypes.c_int32 * 10)(*my_list)
+    # my_list = [1,0,0,0,1,0,0,0,0,0]
+    my_list_p = (ctypes.c_int32 * size)(*guessed_index_array)
     # my_string = "elephant"
-    my_string = "prosperous"
-    result = c_lib.build_display_text(my_list_p, my_string.encode('utf-8'), 10)
+    # my_string = "prosperous"
+    result = c_lib.build_display_text(my_list_p, str.encode('utf-8'), size)
     return result.decode('utf-8')
 
 

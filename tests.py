@@ -36,5 +36,46 @@ class TestCandPythonFunctions(unittest.TestCase):
         )
         self.assertEqual(actual_text, expected_text)
 
+        word = "laughs"
+        guessed_index_array = [1,0,0,0,1,0]
+        expected_text = "l...h."
+        actual_text = c_lib.ctypes_build_display_text(
+            guessed_index_array,
+            word,
+            len(word)
+        )
+        self.assertEqual(actual_text, expected_text)
+
+        word = "magical"
+        guessed_index_array = [1, 1, 1, 1, 1, 0, 1]
+        expected_text = "magic.l"
+        actual_text = c_lib.ctypes_build_display_text(
+            guessed_index_array,
+            word,
+            len(word)
+        )
+        self.assertEqual(actual_text, expected_text)
+
+        word = "magical"
+        guessed_index_array = [1,1,1,1,1,1,1]
+        expected_text = "magical"
+        actual_text = c_lib.ctypes_build_display_text(
+            guessed_index_array,
+            word,
+            len(word)
+        )
+        self.assertEqual(actual_text, expected_text)
+
+        word = "magical"
+        guessed_index_array = [1, 1, 1, 1, 1, 1, 1]
+        expected_text = "magica."
+        actual_text = c_lib.ctypes_build_display_text(
+            guessed_index_array,
+            word,
+            len(word)
+        )
+        self.assertNotEqual(actual_text, expected_text)
+
+
 if __name__ == '__main__':
     unittest.main()
