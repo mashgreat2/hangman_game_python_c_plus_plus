@@ -92,7 +92,7 @@ extern "C" char * build_display_text(int * guessed_index_array, char * str, int 
 //}
 
 int main() {
-//    std::cout << "Hello world!" << "\n";
+    std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
 //  int k = 5;
 //  std::cout << "k before: " << k << "\n";
