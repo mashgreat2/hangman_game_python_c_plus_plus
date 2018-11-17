@@ -69,6 +69,22 @@ extern "C" int update_guessed_correctly(int n, int b) {
   return n;
 }
 
+extern "C" char * build_display_text(int * guessed_index_array, char * str, int size) {
+//  std::cout << "\nsize: " << size << "\n";
+  char * final = new char[size+1];
+  for (int i = 0; i < size; i++) {
+//    std::cout << "str[" << i << "]: " << str[i] << "\n";
+//    std::cout << "guessed_index_array[i]: " << guessed_index_array[i] << "\n";
+    if ( guessed_index_array[i] == 1 ) { final[i] = (char) str[i]; }
+    else { final[i] = '.'; }
+//    std::cout << "final:::: " << final << "\n";
+  }
+  final[size] = '\0'; // need the null terminator..otherwise it doesnt work. spent 1 hour on this bug..
+
+//  std::cout << "\nfinal display test: " << final << "\n";
+  return final;
+}
+
 //extern "C" void free_string(char* str) {
 //  delete str;
 //}
@@ -80,5 +96,8 @@ int main() {
 //  std::cout << "k before: " << k << "\n";
 //  k = update_guessed_correctly(5, 1);
 //  std::cout << "k after: " << k << "\n";
+  int arr[] = {0,1,1,1,0,0,0,0};
+  char word[] = "elephant";
+  build_display_text(arr, word, 8);
   return 0;
 }

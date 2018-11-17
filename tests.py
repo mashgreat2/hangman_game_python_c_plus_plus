@@ -25,6 +25,16 @@ class TestCandPythonFunctions(unittest.TestCase):
         n = c_lib.ctypes_update_guessed_correctly(n, 0)
         self.assertEqual(n, 12)
 
+    def test_ctypes_build_display_text(self):
+        word = "prosperous"
+        guessed_index_array = [1,0,0,0,1,0,0,0,0,0]
+        expected_text = "p...p....."
+        actual_text = c_lib.ctypes_build_display_text(
+            guessed_index_array,
+            word,
+            len(word)
+        )
+        self.assertEqual(actual_text, expected_text)
 
 if __name__ == '__main__':
     unittest.main()

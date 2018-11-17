@@ -7,6 +7,14 @@ c_lib.greet_player_c.argtype = ctypes.c_char_p
 c_lib.greet_player_c.restype = ctypes.c_char_p
 c_lib.update_guessed_correctly.argtype = ctypes.c_int
 c_lib.update_guessed_correctly.restype = ctypes.c_int
+c_lib.build_display_text.argtypes = [
+    ctypes.POINTER(ctypes.c_int32),
+    ctypes.c_char_p,
+    ctypes.c_int
+]
+c_lib.build_display_text.restype = ctypes.c_char_p
+
+
 
 # C++ greet player function
 def ctypes_greet_player(name):
@@ -18,6 +26,15 @@ def ctypes_greet_player(name):
 
 def ctypes_update_guessed_correctly(n, b):
     return c_lib.update_guessed_correctly(n, b)
+
+def ctypes_build_display_text(guessed_index_array, str, size):
+    # my_list = [0,1,1,1,0,0,0,0]
+    my_list = [1,0,0,0,1,0,0,0,0,0]
+    my_list_p = (ctypes.c_int32 * 10)(*my_list)
+    # my_string = "elephant"
+    my_string = "prosperous"
+    result = c_lib.build_display_text(my_list_p, my_string.encode('utf-8'), 10)
+    return result.decode('utf-8')
 
 
 # This is a Python function that calls a C++ add_two function
