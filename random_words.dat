@@ -1,5 +1,5 @@
 const int size = 7938;
-char *words_list[7938] = {
+const char *words_list[7938] = {
   "about",
   "other",
   "their",
