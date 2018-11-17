@@ -23,7 +23,6 @@
 
 #include <iostream>
 
-//#include "random_words.dat"
 
 // need to add - extern “C” before C++ functions to make them work like
 // a normal C function, so that it can work with Python.
@@ -35,6 +34,23 @@ extern "C" int add_two_c(int x, int y) {
 extern "C" int fib_num_c(int n) {
   if ( n <= 1 ) { return n; }
   return fib_num_c(n-2) + fib_num_c(n-1);
+}
+
+#include "random_words.dat"
+#include <random>
+//randomly selects word for user to guess throughout game
+extern "C" char const* generate_word() {
+  int min;
+  int max = 7938;
+  std::random_device rd;
+  std::mt19937 rng(rd());
+  std::uniform_int_distribution<int> uni(min,max);
+
+  auto rindex = uni(rng);
+
+   char const *word = words_list[rindex];
+  return word;
+
 }
 
 // Check if the user has guessed at least one letter correctly.
@@ -101,5 +117,10 @@ int main() {
 //  int arr[] = {0,1,1,1,0,0,0,0};
 //  char word[] = "elephant";
 //  build_display_text(arr, word, 8);
+
+
+  char const *newWord = generate_word();
+  std::cout << newWord << std::endl;
+  std::cout << newWord[1] << std::endl;
   return 0;
 }
