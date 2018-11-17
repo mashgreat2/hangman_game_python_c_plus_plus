@@ -98,8 +98,8 @@ int main() {
 //  std::cout << "k before: " << k << "\n";
 //  k = update_guessed_correctly(5, 1);
 //  std::cout << "k after: " << k << "\n";
-  int arr[] = {0,1,1,1,0,0,0,0};
-  char word[] = "elephant";
-  build_display_text(arr, word, 8);
+//  int arr[] = {0,1,1,1,0,0,0,0};
+//  char word[] = "elephant";
+//  build_display_text(arr, word, 8);
   return 0;
 }
