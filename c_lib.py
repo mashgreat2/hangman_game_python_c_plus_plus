@@ -7,6 +7,7 @@ c_lib.greet_player_c.argtype = ctypes.c_char_p
 c_lib.greet_player_c.restype = ctypes.c_char_p
 c_lib.update_guessed_correctly.argtype = ctypes.c_int
 c_lib.update_guessed_correctly.restype = ctypes.c_int
+c_lib.generate_word.restype = ctypes.c_char_p
 c_lib.build_display_text.argtypes = [
     ctypes.POINTER(ctypes.c_int32),
     ctypes.c_char_p,
@@ -50,5 +51,11 @@ def py_fib_num(n):
     if ( n <= 1 ): return n
     return py_fib_num(n-2) + py_fib_num(n-1)
 
+def ctypes_generate_word():
+    return c_lib.generate_word().decode('utf-8')
+
 if __name__ == '__main__':
     print( "Calling c++ add_two function in python. Adding 3+8:", ctypes_add_two(3,8) )
+    print()
+    print(ctypes_generate_word())
+

@@ -121,6 +121,6 @@ int main() {
 
   char const *newWord = generate_word();
   std::cout << newWord << std::endl;
-  std::cout << newWord[1] << std::endl;
+//  std::cout << newWord[1] << std::endl;
   return 0;
 }

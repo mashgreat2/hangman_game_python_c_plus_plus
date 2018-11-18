@@ -3,7 +3,7 @@
 # SM Mashuque ( sm2344 ),
 # Vy Nguyen ( vqn2 ),
 # Anna Shats ( as2639 )
-#
+# Chris Schwarze ( cs977 )
 #
 # on 11/11/2018
 
@@ -16,8 +16,9 @@ def run_hangman():
     guesses_allowed = 7
     # Todo: Get lots of words and choose one randomly by using the random.choice method equal of C++.
     words = ["elephant"]
-    picked_word = list( words[0] )
-
+    picked_word = words[0]
+    #picked_word = ctypes_generate_word()
+    print(picked_word)
     N = len(picked_word)
 
     letters_guessed = [False] * N
