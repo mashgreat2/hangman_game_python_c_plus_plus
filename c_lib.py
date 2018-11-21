@@ -36,6 +36,8 @@ def ctypes_build_display_text(guessed_index_array, str, size):
     # my_string = "prosperous"
     result = c_lib.build_display_text(my_list_p, str.encode('utf-8'), size)
     return result.decode('utf-8')
+def py_int_generate_guessed_index_array(size):
+    return c_lib.generate_guessed_index_array(ctypes.c_int(size))
 
 
 # This is a Python function that calls a C++ add_two function
@@ -53,6 +55,7 @@ def py_fib_num(n):
 
 def ctypes_generate_word():
     return c_lib.generate_word().decode('utf-8')
+
 
 if __name__ == '__main__':
     print( "Calling c++ add_two function in python. Adding 3+8:", ctypes_add_two(3,8) )
