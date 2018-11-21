@@ -53,6 +53,11 @@ extern "C" char const* generate_word() {
 
 }
 
+extern "C" int[] generate_guessed_index_array(int size){
+    int array[size] = {0};
+    return array[size];
+
+}
 // Check if the user has guessed at least one letter correctly.
 //extern "C" int check_letter_in_word(char * str, char * letter) {
 //    int correct = 0;
@@ -80,6 +85,7 @@ extern "C" char * greet_player_c(char str[]) {
 //  std::cout << "final: " << final << "\n";
   return final;
 }
+
 
 // update guessed correctly variable. return n + 1 if b is 1
 extern "C" int update_guessed_correctly(int n, int b) {
