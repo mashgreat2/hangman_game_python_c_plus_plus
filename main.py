@@ -19,9 +19,15 @@ def run_hangman():
     picked_word = words[0]
     #picked_word = ctypes_generate_word()
     print(picked_word)
+
     N = len(picked_word)
 
-    letters_guessed = [False] * N
+    #letters_guessed = [False] * N
+
+    #trying to call words using the c++ func indexed array
+    letters_guessed = py_int_generate_guessed_index_array(N)
+
+
     guessed_correctly = 0
 
     lines = " _ " * N

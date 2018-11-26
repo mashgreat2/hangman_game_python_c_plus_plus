@@ -7,6 +7,10 @@ c_lib.greet_player_c.argtype = ctypes.c_char_p
 c_lib.greet_player_c.restype = ctypes.c_char_p
 c_lib.update_guessed_correctly.argtype = ctypes.c_int
 c_lib.update_guessed_correctly.restype = ctypes.c_int
+c_lib.generate_guessed_index_array.argtype = ctypes.c_int
+c_lib.generate_guessed_index_array.restype = ctypes.POINTER(ctypes.c_int)
+
+
 c_lib.generate_word.restype = ctypes.c_char_p
 c_lib.build_display_text.argtypes = [
     ctypes.POINTER(ctypes.c_int32),
@@ -36,8 +40,16 @@ def ctypes_build_display_text(guessed_index_array, str, size):
     # my_string = "prosperous"
     result = c_lib.build_display_text(my_list_p, str.encode('utf-8'), size)
     return result.decode('utf-8')
+
+# def py_int_generate_guessed_index_array(size):
+#
+#     return c_lib.generate_guessed_index_array(ctypes.c_int(size))
 def py_int_generate_guessed_index_array(size):
-    return c_lib.generate_guessed_index_array(ctypes.c_int(size))
+    converted_arr=[]
+    actual_arr = c_lib.generate_guessed_index_array(ctypes.c_int(size))
+    for i in range(size):
+        converted_arr.append(actual_arr[i])
+    return converted_arr
 
 
 # This is a Python function that calls a C++ add_two function
