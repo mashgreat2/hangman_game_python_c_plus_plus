@@ -70,6 +70,15 @@ extern "C" int[] generate_guessed_index_array(int size){
 //    return 0;
 //}
 
+extern "C" void update_guessed_index_array(int* arr, char c, char str[]){
+	int length = strlen(str);
+	for(int i=0; i<length;i++){
+		if (str[i]==c){
+			arr[i] = 1;
+		}
+	}
+}
+
 // Create a greeting message with a given player name.
 extern "C" char * greet_player_c(char str[]) {
 //  std::cout << "str: " << str << "\n";
