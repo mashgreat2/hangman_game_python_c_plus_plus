@@ -14,7 +14,7 @@
  * 2. Second you have to create a shared library file.
  * 3. Now you can call that shared library inside any Python file.
  *
- * 1. g++ -c -fPIC _c_lib.cc -o _c_lib.so
+ * 1. g++ -c -fPIC _c_lib.cc -o _c_lib.o
  *    - this line compiles and creates the object file.
  * 2. g++ -shared _c_lib.o -o _c_lib.so
  *    - this creates the shared library object file.
@@ -38,7 +38,7 @@ extern "C" int fib_num_c(int n) {
 
 #include "random_words.dat"
 #include <random>
-randomly selects word for user to guess throughout game
+//randomly selects word for user to guess throughout game
 extern "C" char const* generate_word() {
   int min;
   int max = 7938;
@@ -53,27 +53,31 @@ extern "C" char const* generate_word() {
 
 }
 
-extern "C" int * generate_guessed_index_array(int size){
-    int *array = new int [size];
-    for (int i = 0; i<size;i++) {
-        array[i] = 0;
-       // std::cout << array[i];
-    }
+extern "C" int[] generate_guessed_index_array(int size){
+    int array[size] = {0};
+    return array[size];
 
-    return array;
+}
+// Check if the user has guessed at least one letter correctly.
+extern "C" int check_letter_in_word(char * str, char * letter) {
+  int correct = 0;
+  for (int i = 0; i < strlen(str); i++) {
+    if (str[i] == letter[0])
+      correct++;
+  }
+  if (correct > 0)
+    return 1;
+  return 0;
 }
 
-// Check if the user has guessed at least one letter correctly.
-//extern "C" int check_letter_in_word(char * str, char * letter) {
-//    int correct = 0;
-//    for (int i = 0; i < str.length(); i++) {
-//        if (str[i] == letter)
-//            correct++;
-//    }
-//    if (correct > 0)
-//        return 1;
-//    return 0;
-//}
+extern "C" void update_guessed_index_array(int* arr, char c, char str[]){
+	int length = strlen(str);
+	for(int i=0; i<length;i++){
+		if (str[i]==c){
+			arr[i] = 1;
+		}
+	}
+}
 
 // Create a greeting message with a given player name.
 extern "C" char * greet_player_c(char str[]) {
@@ -90,7 +94,6 @@ extern "C" char * greet_player_c(char str[]) {
 //  std::cout << "final: " << final << "\n";
   return final;
 }
-
 
 
 // update guessed correctly variable. return n + 1 if b is 1
@@ -133,10 +136,6 @@ int main() {
 
   char const *newWord = generate_word();
   std::cout << newWord << std::endl;
-  std::cout << newWord[1] << std::endl;
-
-
-   // int *testgiarr= generate_guessed_index_array(5);
-    //std::cout<<testgiarr;
-    return 0;
+//  std::cout << newWord[1] << std::endl;
+  return 0;
 }
