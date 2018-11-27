@@ -16,11 +16,13 @@ class TestCandPythonFunctions(unittest.TestCase):
         self.assertEqual(actual_msg, expected_msg)
 
     def test_generate_guessed_index_array(self):
+
         n = 5;
 
         actual_msg = c_lib.py_int_generate_guessed_index_array(n)
         expected_msg = [0,0,0,0,0]
         self.assertEqual(actual_msg, expected_msg)
+
 
     def test_ctypes_update_guessed_correctly(self):
         n = 10

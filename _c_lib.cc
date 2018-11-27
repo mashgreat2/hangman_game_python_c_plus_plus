@@ -53,10 +53,14 @@ extern "C" char const* generate_word() {
 
 }
 
-extern "C" int[] generate_guessed_index_array(int size){
-    int array[size] = {0};
-    return array[size];
+extern "C" int * generate_guessed_index_array(int size){
+    int *array = new int [size];
+    for (int i = 0; i<size;i++) {
+        array[i] = 0;
+        // std::cout << array[i];
+    }
 
+    return array;
 }
 // Check if the user has guessed at least one letter correctly.
 extern "C" int check_letter_in_word(char * str, char * letter) {

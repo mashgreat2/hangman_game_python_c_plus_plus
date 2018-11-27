@@ -12,7 +12,6 @@ c_lib.update_guessed_correctly.restype = ctypes.c_int
 c_lib.generate_guessed_index_array.argtype = ctypes.c_int
 c_lib.generate_guessed_index_array.restype = ctypes.POINTER(ctypes.c_int)
 
-
 c_lib.generate_word.restype = ctypes.c_char_p
 c_lib.build_display_text.argtypes = [
     ctypes.POINTER(ctypes.c_int32),
@@ -55,6 +54,7 @@ def py_int_generate_guessed_index_array(size):
     for i in range(size):
         converted_arr.append(actual_arr[i])
     return converted_arr
+
 
 
 # This is a Python function that calls a C++ add_two function
