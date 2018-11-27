@@ -59,16 +59,16 @@ extern "C" int[] generate_guessed_index_array(int size){
 
 }
 // Check if the user has guessed at least one letter correctly.
-//extern "C" int check_letter_in_word(char * str, char * letter) {
-//    int correct = 0;
-//    for (int i = 0; i < str.length(); i++) {
-//        if (str[i] == letter)
-//            correct++;
-//    }
-//    if (correct > 0)
-//        return 1;
-//    return 0;
-//}
+extern "C" int check_letter_in_word(char * str, char * letter) {
+  int correct = 0;
+  for (int i = 0; i < strlen(str); i++) {
+    if (str[i] == letter[0])
+      correct++;
+  }
+  if (correct > 0)
+    return 1;
+  return 0;
+}
 
 extern "C" void update_guessed_index_array(int* arr, char c, char str[]){
 	int length = strlen(str);
