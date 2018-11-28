@@ -19,7 +19,12 @@ c_lib.build_display_text.argtypes = [
     ctypes.c_int
 ]
 c_lib.build_display_text.restype = ctypes.c_char_p
-
+c_lib.update_guessed_index_array.argtypes = [
+    ctypes.POINTER(ctypes.c_int32),
+    ctypes.c_char,
+    ctypes.c_char_p
+]
+c_lib.update_guessed_index_array.restype = ctypes.POINTER(ctypes.c_int)
 
 
 # C++ greet player function
@@ -55,6 +60,11 @@ def py_int_generate_guessed_index_array(size):
         converted_arr.append(actual_arr[i])
     return converted_arr
 
+def ctypes_update_guessed_index_array(my_list, char, word):
+    my_list_p = (ctypes.c_int32 * len(my_list))(*my_list)
+    new_list_p = c_lib.update_guessed_index_array(my_list_p, char.encode('utf-8'), word.encode('utf-8'))
+    updated_list = [ new_list_p[x] for x in range( len( my_list ) ) ]
+    return updated_list
 
 
 # This is a Python function that calls a C++ add_two function
@@ -75,7 +85,8 @@ def ctypes_generate_word():
 
 
 if __name__ == '__main__':
-    print( "Calling c++ add_two function in python. Adding 3+8:", ctypes_add_two(3,8) )
-    print()
-    print(ctypes_generate_word())
+    # print( "Calling c++ add_two function in python. Adding 3+8:", ctypes_add_two(3,8) )
+    # print()
+    # print(ctypes_generate_word())
+    pass
 

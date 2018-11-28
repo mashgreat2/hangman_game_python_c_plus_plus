@@ -22,7 +22,7 @@
 */
 
 #include <iostream>
-
+using namespace std;
 
 // need to add - extern “C” before C++ functions to make them work like
 // a normal C function, so that it can work with Python.
@@ -38,30 +38,32 @@ extern "C" int fib_num_c(int n) {
 
 #include "random_words.dat"
 #include <random>
+
+
 //randomly selects word for user to guess throughout game
 extern "C" char const* generate_word() {
-  int min;
+  size_t min = 0;
   int max = 7938;
   std::random_device rd;
   std::mt19937 rng(rd());
   std::uniform_int_distribution<int> uni(min,max);
 
-  auto rindex = uni(rng);
+  size_t rindex = uni(rng);
 
-   char const *word = words_list[rindex];
+  char const *word = words_list[rindex];
   return word;
 
 }
 
 extern "C" int * generate_guessed_index_array(int size){
-    int *array = new int [size];
-    for (int i = 0; i<size;i++) {
-        array[i] = 0;
-        // std::cout << array[i];
-    }
+  int *array = new int [size];
+  for (int i = 0; i<size;i++) {
+    array[i] = 0;
+  }
 
-    return array;
+  return array;
 }
+
 // Check if the user has guessed at least one letter correctly.
 extern "C" int check_letter_in_word(char * str, char * letter) {
   int correct = 0;
@@ -74,28 +76,26 @@ extern "C" int check_letter_in_word(char * str, char * letter) {
   return 0;
 }
 
-extern "C" void update_guessed_index_array(int* arr, char c, char str[]){
-	int length = strlen(str);
-	for(int i=0; i<length;i++){
-		if (str[i]==c){
-			arr[i] = 1;
-		}
-	}
+extern "C" int * update_guessed_index_array(int * arr, char c, char * str){
+  size_t length = strlen(str);
+  int *updated_array = new int [length];
+  for( int i=0; i<length; i++ ){
+    if ( str[i] == c ){ updated_array[i] = 1; }
+    else { updated_array[i] = arr[i]; }
+  }
+  return updated_array;
 }
 
 // Create a greeting message with a given player name.
 extern "C" char * greet_player_c(char str[]) {
-//  std::cout << "str: " << str << "\n";
   char greeting[] = "Hello, ";
   char message[] = ". Get ready to play some hangman!";
-  int len = 0;
+  size_t len = 0;
   len = strlen(str) + strlen(greeting) + strlen(message);
-//  std::cout << "len: " << len << "\n";
   char * final = new char[len];
   strcat(final, greeting);
   strcat(final, str);
   strcat(final, message);
-//  std::cout << "final: " << final << "\n";
   return final;
 }
 
@@ -107,18 +107,12 @@ extern "C" int update_guessed_correctly(int n, int b) {
 }
 
 extern "C" char * build_display_text(int * guessed_index_array, char * str, int size) {
-//  std::cout << "\nsize: " << size << "\n";
   char * final = new char[size+1];
   for (int i = 0; i < size; i++) {
-//    std::cout << "str[" << i << "]: " << str[i] << "\n";
-//    std::cout << "guessed_index_array[i]: " << guessed_index_array[i] << "\n";
     if ( guessed_index_array[i] == 1 ) { final[i] = (char) str[i]; }
     else { final[i] = '.'; }
-//    std::cout << "final:::: " << final << "\n";
   }
   final[size] = '\0'; // need the null terminator..otherwise it doesnt work. spent 1 hour on this bug..
-
-//  std::cout << "\nfinal display test: " << final << "\n";
   return final;
 }
 
@@ -127,19 +121,28 @@ extern "C" char * build_display_text(int * guessed_index_array, char * str, int 
 //}
 
 int main() {
-    std::cout << "Hello world!" << "\n";
+//  std::cout << "Hello world!" << "\n";
 //    std::cout << "adding 7+8: " << add_two(7,8) << "\n";
 //  int k = 5;
 //  std::cout << "k before: " << k << "\n";
 //  k = update_guessed_correctly(5, 1);
 //  std::cout << "k after: " << k << "\n";
-//  int arr[] = {0,1,1,1,0,0,0,0};
+//  int arr[] = {0,1,0,1,0,0,0,0};
 //  char word[] = "elephant";
 //  build_display_text(arr, word, 8);
-
-
-  char const *newWord = generate_word();
-  std::cout << newWord << std::endl;
+//  cout << "arr: ";
+//  for (int i = 0; i < 8; ++i) {
+//    cout << arr[i] << ", ";
+//  }
+//  cout << endl;
+//  update_guessed_index_array(arr, 'e', word);
+//  cout << "arr(after update): ";
+//  for (int i = 0; i < 8; ++i) {
+//    cout << arr[i] << ", ";
+//  }
+//  cout << endl;
+//  char const *newWord = generate_word();
+//  std::cout << newWord << std::endl;
 //  std::cout << newWord[1] << std::endl;
   return 0;
 }
