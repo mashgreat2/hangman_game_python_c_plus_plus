@@ -5,7 +5,7 @@ c_lib = cdll.LoadLibrary('./_c_lib.so')
 # calling the c++ functions.
 c_lib.greet_player_c.argtype = ctypes.c_char_p
 c_lib.greet_player_c.restype = ctypes.c_char_p
-c_lib.check_letter_in_word.argtype = ctypes.c_char_p
+c_lib.check_letter_in_word.argtype = [ctypes.c_char_p, ctypes.c_char_p]
 c_lib.check_letter_in_word.restype = ctypes.c_int
 c_lib.update_guessed_correctly.argtype = ctypes.c_int
 c_lib.update_guessed_correctly.restype = ctypes.c_int

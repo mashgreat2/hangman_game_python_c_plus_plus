@@ -26,6 +26,16 @@ class TestCandPythonFunctions(unittest.TestCase):
         self.assertEqual(actual_msg, expected_msg)
         print("test_generate_guessed_index_array PASSED.")
 
+    def check_letter_in_word(self):
+
+        str = "hello"
+        letter = "l"
+
+        actual_bool = c_lib.py_check_letter_in_word(str, letter)
+        self.assertEqual(actual_bool, 1)
+
+        print("test_check_letter_in_word PASSED.")
+
     def test_ctypes_update_guessed_index_array(self):
         arr = [0, 1, 0, 1, 0, 0, 0, 0]
         word = "elephant"
