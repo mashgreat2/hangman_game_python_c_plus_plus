@@ -5,8 +5,8 @@ c_lib = cdll.LoadLibrary('./_c_lib.so')
 # calling the c++ functions.
 c_lib.greet_player_c.argtype = ctypes.c_char_p
 c_lib.greet_player_c.restype = ctypes.c_char_p
-# c_lib.check_letter_in_word.argtype = ctypes.c_char_p
-# c_lib.check_letter_in_word.restype = ctypes.c_int
+c_lib.check_letter_in_word.argtype = ctypes.c_char_p
+c_lib.check_letter_in_word.restype = ctypes.c_int
 c_lib.update_guessed_correctly.argtype = ctypes.c_int
 c_lib.update_guessed_correctly.restype = ctypes.c_int
 c_lib.generate_guessed_index_array.argtype = ctypes.c_int
@@ -35,8 +35,8 @@ def ctypes_greet_player(name):
 
     return _msg.decode('utf-8')
 
-# def ctypes_check_letter_in_word(str, letter):
-    # return c_lib.check_letter_in_word(str, letter)
+def ctypes_check_letter_in_word(str, letter):
+    return c_lib.check_letter_in_word(str, letter)
 
 def ctypes_update_guessed_correctly(n, b):
     return c_lib.update_guessed_correctly(n, b)
