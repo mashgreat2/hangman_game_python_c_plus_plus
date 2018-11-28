@@ -36,7 +36,7 @@ def ctypes_greet_player(name):
     return _msg.decode('utf-8')
 
 def ctypes_check_letter_in_word(str, letter):
-    return c_lib.check_letter_in_word(str, letter)
+    return c_lib.check_letter_in_word(str.encode('utf-8'), letter.encode('utf-8'))
 
 def ctypes_update_guessed_correctly(n, b):
     return c_lib.update_guessed_correctly(n, b)

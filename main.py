@@ -7,30 +7,31 @@
 #
 # on 11/11/2018
 
+import c_lib
+
 # Todo: design a better interface ?
 def run_hangman():
-    # name = input("What is your name?\n")
+    name = input("What is your name?\n")
 
-    # print("\nHi, " + name + ".\nGet ready to play some hangman!")
+    welcome_message = c_lib.ctypes_greet_player(name)
+    print(welcome_message)
 
     guesses_allowed = 7
-    # Todo: Get lots of words and choose one randomly by using the random.choice method equal of C++.
-    words = ["elephant"]
-    picked_word = words[0]
-    #picked_word = ctypes_generate_word()
+
+    picked_word = c_lib.ctypes_generate_word()
     print(picked_word)
 
     N = len(picked_word)
 
-    #letters_guessed = [False] * N
 
     #trying to call words using the c++ func indexed array
-    letters_guessed = py_int_generate_guessed_index_array(N)
+
+    letters_guessed = c_lib.py_int_generate_guessed_index_array(N)
 
 
     guessed_correctly = 0
 
-    lines = " _ " * N
+    lines = "." * N
     print("\n", lines)
 
     while ( guesses_allowed > 0 and guessed_correctly < N ):
@@ -40,14 +41,10 @@ def run_hangman():
             str(guesses_allowed) +
             " guesses left.\n"
         )
-        guessed_one_at_least = False
-        # Check if the user has guessed at least one letter correctly.
-        # Todo: this can be a method written in C++
-        for i in range(N):
-            if ( letter == picked_word[i] ):
-                letters_guessed[i] = True
-                guessed_correctly += 1
-                guessed_one_at_least = True
+
+        guessed_one_at_least = c_lib.ctypes_check_letter_in_word(picked_word, letter) == 1
+        letters_guessed = c_lib.ctypes_update_guessed_index_array(letters_guessed, letter, picked_word)
+        guessed_correctly = letters_guessed.count(1)
 
         if not guessed_one_at_least:
             guesses_allowed -= 1
@@ -57,14 +54,7 @@ def run_hangman():
                 " guesses left.\n"
             )
 
-        # Build up the underscores or letters line to display user.
-        # Todo: this can be done with a C++ function.
-        lines = ""
-        for i in range(N):
-            if ( letters_guessed[i] == True ):
-                lines = lines + " " + picked_word[i] + " "
-            else:
-                lines = lines + " _ "
+        lines = c_lib.ctypes_build_display_text(letters_guessed, picked_word, len(picked_word))
 
         print("\n", lines)
 
