@@ -26,13 +26,15 @@ class TestCandPythonFunctions(unittest.TestCase):
         self.assertEqual(actual_msg, expected_msg)
         print("test_generate_guessed_index_array PASSED.")
 
-    def check_letter_in_word(self):
+    def test_check_letter_in_word(self):
 
-        str = "hello"
-        letter = "l"
+        s = "hello"
 
-        actual_bool = c_lib.py_check_letter_in_word(str, letter)
-        self.assertEqual(actual_bool, 1)
+        actual_val = c_lib.ctypes_check_letter_in_word(s, "l")
+        self.assertEqual(actual_val, 1)
+
+        actual_val = c_lib.ctypes_check_letter_in_word(s, "x")
+        self.assertEqual(actual_val, 0)
 
         print("test_check_letter_in_word PASSED.")
 
