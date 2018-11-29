@@ -15,6 +15,11 @@ How to play:
 You can clone the repository and type in terminal: "python ./main.py" to start 
 the game. 
 
-The C++ functions that called are written in the file '_c_lib.cc' and the 
-corresponding compatible functions are written in the file 'c_lib.py'. Our main.py 
+Additional Info: 
+1. I did the initial research, identified what functions could be written in C++, and
+setup C++ code to work with Python with the help of ctypes library. 
+2. A total of 6 functions were identified. I wrote 3 of them and the other three were 
+written by my teammates. 
+3. The C++ functions used in `main.py` are written in the file `_c_lib.cc` and the 
+corresponding compatible functions are written in the file `c_lib.py`. Our main.py 
 game file calls the functions from the 'c_lib.py' Python file.
