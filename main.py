@@ -41,6 +41,10 @@ def run_hangman():
             str(guesses_allowed) +
             " guesses left.\n"
         )
+        while (letter == ""):
+            letter = input(
+                "\nInput can't be blank; enter a letter\n"
+            )
 
         guessed_one_at_least = c_lib.ctypes_check_letter_in_word(picked_word, letter) == 1
         letters_guessed = c_lib.ctypes_update_guessed_index_array(letters_guessed, letter, picked_word)
