@@ -26,3 +26,5 @@ written by my teammates.
 4. I also created a Python script to generate `random_words.dat`, which contains
 a list of 7938 words, so that we could easily pick a random number C++ and choose 
 the word at that index from the `random_words.dat` file.
+5. I also setup a unit test file `tests.py` so that we could systematically check the C++ and 
+Python code functionality.
