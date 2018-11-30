@@ -9,7 +9,6 @@
 
 import c_lib
 
-# Todo: design a better interface ?
 def run_hangman():
     name = input("What is your name?\n")
 
@@ -19,7 +18,7 @@ def run_hangman():
     guesses_allowed = 7
 
     picked_word = c_lib.ctypes_generate_word()
-    print(picked_word)
+    #print(picked_word)
 
     N = len(picked_word)
 
