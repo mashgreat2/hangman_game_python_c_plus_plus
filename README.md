@@ -12,8 +12,10 @@ of the game.
 
 How to play:
 
-You can clone the repository and type in terminal: "python ./main.py" to start 
-the game. 
+You can clone the repository and run it in terminal: 
+1. `git clone https://github.com/mashgreat2/hangman_game_python_c_plus_plus.git`
+2. `cd hangman_game_python_c_plus_plus`
+3. `python ./main.py`
 
 Additional Info: 
 1. I did the initial research, identified what functions could be written in C++, and
@@ -24,7 +26,7 @@ game file calls the functions from the 'c_lib.py'
 3. A total of 6 functions were identified. I wrote 3 of them and the other three were 
 written by my teammates. 
 4. I also created a Python script to generate `random_words.dat`, which contains
-a list of 7938 words, so that we could easily pick a random number C++ and choose 
+a list of 7938 words, so that we could easily pick a random index number in C++ and choose 
 the word at that index from the `random_words.dat` file.
-5. I also setup a unit test file `tests.py` so that we could systematically check the C++ and 
+5. I also setup unit testing, the file `tests.py`, so that we could systematically check the C++ and 
 Python code functionality.
