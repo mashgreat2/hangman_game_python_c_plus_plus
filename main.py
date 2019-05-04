@@ -65,7 +65,8 @@ def run_hangman():
     if guessed_correctly == N:
         print("Congratulations, you win!")
     else:
-        print("Failed to guess correctly. Try again.")
+        print("Failed to guess correctly.")
+        print("The correct word was: {}. \nTry again.".format(picked_word))
 
 
 
